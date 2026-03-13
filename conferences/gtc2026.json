@@ -1,0 +1,33 @@
+{
+  "conference_id": "gtc2026",
+  "conference_name": "NVIDIA GTC 2026",
+  "catalog_url": "https://register.nvidia.com/flow/nvidia/gtc26/ap/page/catalogv",
+  "base_url": "https://register.nvidia.com",
+  "login_url_pattern": "login|signin|identityiq|sso",
+
+  "selectors": {
+    "session_title_text": "div.title-text",
+    "session_title_container": "div.catalog-result-title",
+    "badge": "div.badge",
+    "load_more_button_text": "Show more"
+  },
+
+  "session_code_pattern": "\\[([A-Z0-9\\-]+)\\]",
+
+  "timing": {
+    "page_load_timeout_ms": 30000,
+    "first_session_timeout_ms": 15000,
+    "load_more_click_wait_s": 2.5,
+    "load_more_stuck_threshold": 3,
+    "max_fetch_duration_s": 600,
+    "auth_poll_interval_s": 5,
+    "auth_wait_max_s": 300
+  },
+
+  "cache_ttl_hours": 24,
+
+  "browser": {
+    "profile_dir": "sessions/.browser_profile",
+    "headless": false
+  }
+}
