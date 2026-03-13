@@ -17,10 +17,13 @@ Step 3:  Recommend
 
 ## Step 1a — Identify Conference
 
-Ask the user:
-> "Which conference? Give me a short ID (e.g. `gtc2026`, `reinvent2026`) and the full name if it's new."
+Glob `conferences/*.json` to list all pre-configured conferences.
 
-Check if a config already exists using Glob on `conferences/{id}.json`.
+If configs exist, say:
+> "I found a pre-configured conference: **{conference_name}**. Is that the one you want, or are you looking for a different one? If different, paste your attendee catalog URL — the page in your registration portal where you browse sessions."
+
+If no configs exist, ask:
+> "Which conference? Paste your attendee catalog URL — the page in your registration portal where you browse sessions."
 
 ---
 

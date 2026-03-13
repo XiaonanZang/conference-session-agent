@@ -42,7 +42,12 @@ This tool is built on the **Rainfocus** conference platform. NVIDIA GTC 2026 is 
 
 ### 1. Get the repo
 
+```bash
+git clone https://github.com/XiaonanZang/conference-session-agent.git
+cd conference-session-agent
+```
 
+Open Claude Code from inside this folder — the agent needs to be running at the repo root to find the skill and write session data.
 
 ### 2. Open Claude Code and load the skill
 
