@@ -105,6 +105,17 @@ def extract_sessions_from_html(html: str, config: dict, base_url: str) -> list[d
     sessions = []
     seen_codes = set()
 
+    # Pre-extract descriptions keyed by uppercase session code
+    # HTML: <div id="s81902" class="description"><div>TEXT...</div></div>
+    desc_map = {}
+    for id_val, desc_html in re.findall(
+        r'<div id="([^"]+)" class="description">(.*?)</div>\s*</div>',
+        html, re.DOTALL
+    ):
+        text = re.sub(r'<[^>]+>', ' ', desc_html)
+        text = re.sub(r'\s+', ' ', text).strip()
+        desc_map[id_val.upper()] = text
+
     # Find all session blocks: URL + title
     # href may be relative (/flow/...) or absolute (https://...) depending on the portal
     matches = re.finditer(
@@ -165,7 +176,7 @@ def extract_sessions_from_html(html: str, config: dict, base_url: str) -> list[d
             "time_slot": time_str,
             "track": tracks,
             "badges_raw": all_badges,
-            "description": "",
+            "description": desc_map.get(session_code, ""),
             "url": url,
             "extracted_at": datetime.now(timezone.utc).isoformat()
         })
